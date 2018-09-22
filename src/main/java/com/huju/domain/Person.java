@@ -29,12 +29,13 @@ import java.util.Map;
  *      @ConfigurationProperties(prefix = "person") 默认读的是全局的那个配置文件,但是把东西都卸载全局的配置文件里不太合适,
  *     那么就可以用到 @PropertySource(value = {"classpath:person.properties"}) 注解,该注解用于指定去读取哪个配置文件,value里
  *     可以传入多个文件路径
+ *
  */
 
 @Component  // 将该组件加入容器
 @ConfigurationProperties(prefix = "person") // 指定获取哪个属性下面的
 @Validated  // 参数校验使用
-@PropertySource(value = {"classpath:person.properties"})
+// @PropertySource(value = {"classpath:person.properties"})
 public class Person {
     // 对象的名称
     private String lastName;
