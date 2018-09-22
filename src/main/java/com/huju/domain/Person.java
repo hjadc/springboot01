@@ -1,22 +1,32 @@
 package com.huju.domain;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
+import org.springframework.validation.annotation.Validated;
 
+import javax.validation.constraints.Email;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 /**
  * Created by huju on 2018/9/22.
+ *
  *  测试将配置文件中配置的每一个属性的值,映射到这个组件中
- *  @ConfigurationProperties: 告诉springboot将本类的所有属性和配置文件中相关的配置进行绑定
- *       prefix = "person": 获取配置文件中哪个下面的所有属性进行一一映射
- *  @Component 意思是将该文件类加入容器中;因为只有这个组件是容器中的组件才能使用容器提供的 @ConfigurationProperties 功能
- *  测试在单元测试里,只要引入该类,就能拿到所有值了
+ *  1.批量获取:
+ *      @ConfigurationProperties: 告诉springboot将本类的所有属性和配置文件中相关的配置进行绑定
+ *           prefix = "person": 获取配置文件中哪个下面的所有属性进行一一映射
+ *      @Component 意思是将该文件类加入容器中;因为只有这个组件是容器中的组件才能使用容器提供的 @ConfigurationProperties 功能
+ *      测试在单元测试里,只要引入该类,就能拿到所有值了
+ *      这个支持松散语法绑定(大写用-或者-表示,比如能拿到yml的last-name的值)
+ *      这个还支持参数校验,比如在该类上打上 @Validated 注解,再在字段上打上 @Email,就能校验拿到的值是不是email格式的
+ *
+ *  2.也可以用这个注解获取单个内容 @Value("${person.testa}")
  */
-@Component
+@Component  // 将该组件加入容器
 @ConfigurationProperties(prefix = "person")
+@Validated  // 参数校验使用
 public class Person {
     // 对象的名称
     private String lastName;
@@ -34,6 +44,17 @@ public class Person {
     private List<Object> blists;
     // 对象里放对象
     private Dog dog;
+
+    // 测试参数校验
+    @Email(message = "请提供一个正确的邮箱")
+    private String email;
+
+    // 测试@value("${}")获取配置之文件内容,这个用的也挺多的
+    @Value("${person.testa}")
+    private String test01;
+    // 测试@value("#{}")表达式赋值内容;这个是spel语法
+    @Value("#{5*6}")
+    private String test02;
 
     public String getLastName() {
         return lastName;
@@ -99,6 +120,30 @@ public class Person {
         this.dog = dog;
     }
 
+    public String getTest01() {
+        return test01;
+    }
+
+    public void setTest01(String test01) {
+        this.test01 = test01;
+    }
+
+    public String getTest02() {
+        return test02;
+    }
+
+    public void setTest02(String test02) {
+        this.test02 = test02;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     @Override
     public String toString() {
         return "Person{" +
@@ -110,6 +155,9 @@ public class Person {
                 ", alists=" + alists +
                 ", blists=" + blists +
                 ", dog=" + dog +
+                ", email='" + email + '\'' +
+                ", test01='" + test01 + '\'' +
+                ", test02='" + test02 + '\'' +
                 '}';
     }
 }

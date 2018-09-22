@@ -22,3 +22,6 @@ person:
     dog:
       name: 小狗對象的名稱
       age: 6
+    email: 839817187@qq.com
+    testa: 测试@$value单独获取
+    testb: 测试@v#alue单独获取

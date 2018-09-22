@@ -60,6 +60,9 @@ public class Springboot001ApplicationTests {
 
 	}
 
+	/**
+	 * 测试获取配置文件的值
+	 */
 	@Test
 	public void getProperties(){
 		System.out.println(person);
