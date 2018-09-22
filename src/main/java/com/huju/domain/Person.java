@@ -2,6 +2,7 @@ package com.huju.domain;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 
@@ -23,10 +24,17 @@ import java.util.Map;
  *      这个还支持参数校验,比如在该类上打上 @Validated 注解,再在字段上打上 @Email,就能校验拿到的值是不是email格式的
  *
  *  2.也可以用这个注解获取单个内容 @Value("${person.testa}")
+ *
+ *  3.@PropertySource
+ *      @ConfigurationProperties(prefix = "person") 默认读的是全局的那个配置文件,但是把东西都卸载全局的配置文件里不太合适,
+ *     那么就可以用到 @PropertySource(value = {"classpath:person.properties"}) 注解,该注解用于指定去读取哪个配置文件,value里
+ *     可以传入多个文件路径
  */
+
 @Component  // 将该组件加入容器
-@ConfigurationProperties(prefix = "person")
+@ConfigurationProperties(prefix = "person") // 指定获取哪个属性下面的
 @Validated  // 参数校验使用
+@PropertySource(value = {"classpath:person.properties"})
 public class Person {
     // 对象的名称
     private String lastName;

@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationContext;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -26,6 +27,9 @@ public class Springboot001ApplicationTests {
 
 	@Autowired
 	private Person person; // 测试获取配置文件的内容
+
+	@Autowired
+	ApplicationContext ioc;
 
 
 	/**
@@ -66,6 +70,16 @@ public class Springboot001ApplicationTests {
 	@Test
 	public void getProperties(){
 		System.out.println(person);
+
+	}
+
+	/**
+	 * 测试给容器中添加bean
+	 */
+	@Test
+	public void getBean(){
+		boolean bean = ioc.containsBean("helloService");
+		System.out.println(bean);
 
 	}
 
