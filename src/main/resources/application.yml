@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    url: jdbc:mysql://192.168.197.128:3306/a?useUnicode=true&characterEncoding=utf8
+    driverClassName: com.mysql.jdbc.Driver
+    username: root
+    password: aaaaaa
+  redis:
+    host: 192.168.197.128
+
+# 测试代码里获取配文件的内容
+# 测试yml文件的各对象的写法;切记,value后面要有一个空格
+person:
+    lastName: zhangsan
+    age: 18
+    boss: false
+    birth: 2018/09/22
+    maps: {k1: 我是第一个值,"k2": "我是不转意/n的值",'k3': '我是转意/n的值'}
+    alists:
+      - 第一种list写法的第一个值
+      - 第一种list写法的第二个值
+    blists: [第二种list写法的第一个值,第二种list写法的第二个值]
+    dog:
+      name: 小狗對象的名稱
+      age: 6
