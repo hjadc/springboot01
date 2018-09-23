@@ -1,3 +1,4 @@
+
 spring:
   datasource:
     url: jdbc:mysql://192.168.197.128:3306/a?useUnicode=true&characterEncoding=utf8
@@ -6,6 +7,8 @@ spring:
     password: aaaaaa
   redis:
     host: 192.168.197.128
+  profiles: # 指定读取哪个配置
+    active: dev
 
 # 测试代码里获取配文件的内容
 # 测试yml文件的各对象的写法;切记,value后面要有一个空格
@@ -26,3 +29,17 @@ person:
     # 配置文件里可以用占位符${}来获取之前定义的值或者运行获取一些函数,还可以定义默认值用冒号
     testa: ${random.uuid:我是默认值}测试@$value单独获取
     testb: 测试@v#alue单独获取
+
+# 修改端口
+server:
+  port: 8081
+---
+spring:
+  profiles: dev # 当前文档块的名称
+server:
+  port: 8082
+---
+spring:
+  profiles: prod
+server:
+  port: 8083
