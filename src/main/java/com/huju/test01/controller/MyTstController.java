@@ -5,10 +5,13 @@ import com.huju.test01.dao.MyTestDao;
 import com.huju.test01.domain.KpiIndexDomain;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
@@ -18,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Api(description = "普通测试接口")
 @Controller
 public class MyTstController {
+    private static  Logger log = LoggerFactory.getLogger(MyTstController.class);
 
     @Autowired
     MyTestDao myTestDao;
@@ -33,11 +37,12 @@ public class MyTstController {
 
     @ApiOperation(value = "获取指标接口", notes = "获取接口")
     @ResponseBody
-    @RequestMapping("getIndex/{id}")
+    @RequestMapping(value = "getIndex/{id}",method = {RequestMethod.GET})
     public String getIndex(@PathVariable Long id) {
         KpiIndexDomain indexById = myTestDao.getIndexById(id);
         String s = JSONObject.toJSONString(indexById);
         System.out.println("进来了: " + s);
+        log.info("老子是用新日志打印的: " + s);
         return s;
     }
 }

@@ -1,13 +1,13 @@
 
 spring:
   datasource:
-    url: jdbc:mysql://192.168.197.128:3306/a?useUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://localhost:3306/p2p_uat?useUnicode=true&characterEncoding=utf8
     driverClassName: com.mysql.jdbc.Driver
     username: root
-    password: aaaaaa
+    password: 123456
   redis:
     host: 192.168.197.128
-  profiles: # 指定读取哪个配置
+  profiles: # 指定激活读取哪个配置
     active: dev
 
 # 测试代码里获取配文件的内容
@@ -31,8 +31,8 @@ person:
     testb: 测试@v#alue单独获取
 
 # 修改端口
-server:
-  port: 8081
+#server:
+#  port: 8081
 ---
 spring:
   profiles: dev # 当前文档块的名称

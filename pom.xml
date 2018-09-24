@@ -78,7 +78,7 @@
 			<artifactId>spring-boot-starter-data-redis</artifactId>
 		</dependency>
 
-		<!-- 导入配置文件处理器,这样配置文件惊醒绑定就会有提示 -->
+		<!-- 导入配置文件处理器,这样配置文件进行绑定就会有提示 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-configuration-processor</artifactId>
