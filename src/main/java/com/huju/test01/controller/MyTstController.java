@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Arrays;
+import java.util.Map;
+
 /**
  * Created by huju on 2018/9/16.
  */
@@ -44,5 +47,15 @@ public class MyTstController {
         System.out.println("进来了: " + s);
         log.info("老子是用新日志打印的: " + s);
         return s;
+    }
+
+    @ApiOperation(value = "测试使用thymeleaf模板接口", notes = "测试使用thymeleaf模板接口")
+    @RequestMapping(value = "/success",method = {RequestMethod.GET})
+    public String success(Map<String,Object> map) {
+
+        map.put("hello","<h1>你好啊!</h1>");
+        map.put("users", Arrays.asList("zhangsan","lisi","wangwu"));
+        log.info("************** 成功跳转到thymeleaf模板页面 ************");
+        return "success";
     }
 }

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="en"xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>测试跳转到模板页面</title>
+</head>
+<body>
+
+<h1>跳转成功!</h1>
+
+<div th:id="${hello}" th:class="${hello}" th:text="${hello}">这里的信息白写</div>
+<hr/>
+
+<div th:text="${hello}">这个会转意</div>
+<div th:utext="${hello}">这个不转意</div>
+
+<hr/>
+
+<!-- th:each 每次遍历都会生成当前这个标签: 3个h2 -->
+<h2 th:text="${user}" th:each="user:${users}">就会升高的</h2>
+<h3>换行</h3><br/>
+
+<h4>
+    <span th:each="user:${users}">[[${user}]]</span>
+</h4>
+
+</body>
+</html>
