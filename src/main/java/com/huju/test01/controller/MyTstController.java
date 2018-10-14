@@ -5,6 +5,7 @@ import com.huju.test01.dao.MyTestDao;
 import com.huju.test01.domain.KpiIndexDomain;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,9 @@ import java.util.Map;
 
 @Api(description = "普通测试接口")
 @Controller
+@Slf4j
 public class MyTstController {
-    private static  Logger log = LoggerFactory.getLogger(MyTstController.class);
+    // private static  Logger log = LoggerFactory.getLogger(MyTstController.class);
 
     @Autowired
     MyTestDao myTestDao;

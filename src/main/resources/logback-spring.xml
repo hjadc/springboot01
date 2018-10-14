@@ -7,11 +7,14 @@
     <!-- 控制台输出 -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-            <!-- 指定不同环境输出不同的格式 -->
+            <!-- logback.xml文件：直接就被日志框架识别了
+            logback-spring.xml文件：日志框架就不直接加载日志的配置项，由SpringBoot解析日志配置，可以使用SpringBoot的高级Profile功能-->
+            <!-- 指定不同环境输出不同的格式,这个必须是logback-spring.xml文件才有该配置 -->
             <springProfile name="dev">
                 <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} --> [%thread] %-5level %logger{30} - %msg%n</pattern>
             </springProfile>
-            <springProfile name="prod">
+            <!-- 也可以写不等于dev环境应该怎么输出 -->
+            <springProfile name="!dev">
                 <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} =====> [%thread] %-5level %logger{30} - %msg%n</pattern>
             </springProfile>
         </encoder>
