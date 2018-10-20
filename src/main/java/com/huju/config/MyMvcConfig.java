@@ -16,6 +16,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  */
 @Configuration
 public class MyMvcConfig extends WebMvcConfigurerAdapter {
+    // 有下面的bean的话,就不用配置这个了
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         // super.addViewControllers(registry);
@@ -25,7 +26,7 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
 
 
     /**
-     * 这个只不过是以内部类的形式来接管,也可以不写这个bean,一个一个来重写也行
+     * 这个只不过是以内部类的形式来接管,也可以不写这个bean,像上面那样一个一个来重写也行
      * @return
      */
     @Bean
@@ -44,9 +45,10 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
             @Override
             public void addInterceptors(InterceptorRegistry registry) {
                 // super.addInterceptors(registry);
-                // /** 拦截所有的,excludePathPatterns排除一部分不拦截,静态文件不用管,springboot默认放行
+                // /** 拦截所有的,excludePathPatterns排除一部分不拦截
                 registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
-                        .excludePathPatterns("/index.html","/","/user/login");
+                        .excludePathPatterns("/index.html","/","/user/login","/**/*.css",
+                                "/**/*.js", "/**/*.png", "/**/*.jpg", "/**/*.jpeg","/asserts/img/*");
             }
         };
 
