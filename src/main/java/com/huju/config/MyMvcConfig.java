@@ -19,6 +19,7 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
         // super.addViewControllers(registry);
         //浏览器发送 http://localhost:8080/aaaaa 请求来到 success页面
         registry.addViewController("/aaaaa").setViewName("success");
+        registry.addViewController("/main.html").setViewName("dashboard");
     }
 
     /**
