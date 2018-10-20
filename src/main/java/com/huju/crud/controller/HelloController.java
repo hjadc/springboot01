@@ -15,8 +15,8 @@ public class HelloController {
      * 默认首页
      * @return
      */
-    @RequestMapping({"/","/index.html"})
+    /*@RequestMapping({"/","/index.html"})
     public String index(){
         return "login";
-    }
+    }*/
 }
