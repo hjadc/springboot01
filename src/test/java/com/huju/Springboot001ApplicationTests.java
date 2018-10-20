@@ -1,6 +1,6 @@
 package com.huju;
 
-import com.huju.domain.Person;
+import com.huju.test01.domain.Person;
 import com.huju.test01.domain.KpiIndexDomain;
 import org.junit.Test;
 import org.junit.runner.RunWith;

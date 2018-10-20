@@ -1,4 +1,4 @@
-package com.huju.domain;
+package com.huju.test01.domain;
 
 /**
  * Created by huju on 2018/9/22.

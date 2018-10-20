@@ -52,7 +52,7 @@ public class MyTstController {
     }
 
     @ApiOperation(value = "测试使用thymeleaf模板接口", notes = "测试使用thymeleaf模板接口")
-    @RequestMapping(value = "/success",method = {RequestMethod.GET})
+    @RequestMapping(value = "/is_success",method = {RequestMethod.GET})
     public String success(Map<String,Object> map) {
 
         map.put("hello","<h1>你好啊!</h1>");

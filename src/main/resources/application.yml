@@ -9,6 +9,8 @@ spring:
     host: 192.168.197.128
   profiles: # 指定激活读取哪个配置
     active: dev
+  messages: # 指定去哪获取国际化语言包
+    basename: i18n.login
 
 # 测试代码里获取配文件的内容
 # 测试yml文件的各对象的写法;切记,value后面要有一个空格
