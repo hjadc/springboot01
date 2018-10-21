@@ -27,7 +27,7 @@ public class LoginHandlerInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         Object loginUser = request.getSession().getAttribute("loginUser");
-        log.info("************** 拦截器,获取到session: {} **********", JSONObject.toJSONString(loginUser));
+        // log.info("************** 拦截器,获取到session: {} **********", JSONObject.toJSONString(loginUser));
         if (null == loginUser) {
             // 未登陆,转发到登陆页面;
             request.setAttribute("msg", "没有权限,请登陆!");
