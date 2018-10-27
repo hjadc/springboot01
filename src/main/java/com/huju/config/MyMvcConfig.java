@@ -49,6 +49,7 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
                 registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
                         .excludePathPatterns("/index.html","/","/user/login","/**/*.css",
                                 "/**/*.js", "/**/*.png", "/**/*.jpg", "/**/*.jpeg","/asserts/img/*");
+                // 放行swegger-ui"/swagger-ui.html","/swagger-resources/**","classpath:/META-INF/resources/"
             }
         };
 

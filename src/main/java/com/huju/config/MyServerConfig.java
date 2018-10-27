@@ -25,7 +25,7 @@ public class MyServerConfig {
      */
     @Bean
     public ServletRegistrationBean myServlet() {
-        ServletRegistrationBean registrationBean = new ServletRegistrationBean(new Myservlet(), "/myServlet");
+        ServletRegistrationBean registrationBean = new ServletRegistrationBean<>(new Myservlet(), "/myServlet");
         return registrationBean;
     }
 

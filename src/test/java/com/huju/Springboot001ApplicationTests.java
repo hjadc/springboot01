@@ -9,8 +9,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Date;
 
 @RunWith(SpringRunner.class)
@@ -30,6 +34,9 @@ public class Springboot001ApplicationTests {
 
 	@Autowired
 	ApplicationContext ioc;
+
+	@Autowired
+	DataSource dataSource;
 
 
 	/**
@@ -80,6 +87,19 @@ public class Springboot001ApplicationTests {
 	public void getBean(){
 		boolean bean = ioc.containsBean("helloService");
 		System.out.println(bean);
+
+	}
+
+	/**
+	 * 测试jdbc连接
+	 */
+	@Test
+	public void jdbcTest() throws SQLException {
+		System.out.println(dataSource.getClass());
+
+		// 打印连接信息
+		Connection connection = dataSource.getConnection();
+		System.out.println(connection);
 
 	}
 
