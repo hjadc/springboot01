@@ -56,6 +56,11 @@ person:
     testa: ${random.uuid:我是默认值}测试@$value单独获取
     testb: 测试@v#alue单独获取
 
+# 指定mybatis的配置文件
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
+
 # 修改端口
 #server:
 #  port: 8081
