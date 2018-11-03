@@ -1,3 +1,5 @@
+#spring boot基础练习
+
 ###1.整合swagger-ui
 ###2.整合redis
     修改redis的默认序列化为json(默认为jdk)
