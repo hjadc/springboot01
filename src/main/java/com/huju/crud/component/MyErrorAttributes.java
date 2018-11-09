@@ -21,6 +21,7 @@ public class MyErrorAttributes extends DefaultErrorAttributes {
         errorAttributes.put("boss", "huju");
 
         // 从request域中拿到我们自己在全局异常处理器里加上的数据
+        @SuppressWarnings("unchecked")
         Map<String,Object> ext = (Map<String, Object>) webRequest.getAttribute("ext", RequestAttributes.SCOPE_REQUEST);
         errorAttributes.put("ext", ext);
         return errorAttributes;

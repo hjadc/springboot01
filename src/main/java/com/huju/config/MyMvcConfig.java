@@ -5,17 +5,14 @@ import com.huju.crud.component.MyLocaleResolver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.LocaleResolver;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.*;
 
 /**
  * 扩展springMvc 如果要全面接管还需要加上@EnableWebMvc注解(一般不建议全面接管)
  * Created by huju on 2018/10/14.
  */
 @Configuration
-public class MyMvcConfig extends WebMvcConfigurerAdapter {
+public class MyMvcConfig implements WebMvcConfigurer {
     // 有下面的bean的话,就不用配置这个了
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
@@ -30,8 +27,8 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
      * @return
      */
     @Bean
-    public WebMvcConfigurerAdapter webMvcConfigurerAdapter() {
-        WebMvcConfigurerAdapter adapter = new WebMvcConfigurerAdapter() {
+    public WebMvcConfigurer webMvcConfigurerAdapter() {
+        WebMvcConfigurer adapter = new WebMvcConfigurer() {
             // 该方法用于添加视图映射
             @Override
             public void addViewControllers(ViewControllerRegistry registry) {
@@ -47,7 +44,7 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
                 // super.addInterceptors(registry);
                 // /** 拦截所有的,excludePathPatterns排除一部分不拦截
                 registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
-                        .excludePathPatterns("/index.html","/","/user/login","/**/*.css",
+                        .excludePathPatterns("/login.html","/index.html","/","/user/login","/**/*.css",
                                 "/**/*.js", "/**/*.png", "/**/*.jpg", "/**/*.jpeg","/asserts/img/*");
                 // 放行swegger-ui"/swagger-ui.html","/swagger-resources/**","classpath:/META-INF/resources/"
             }

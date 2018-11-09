@@ -24,6 +24,7 @@ public class MyServerConfig {
      * @return
      */
     @Bean
+    @SuppressWarnings("rawtypes")
     public ServletRegistrationBean myServlet() {
         ServletRegistrationBean registrationBean = new ServletRegistrationBean<>(new Myservlet(), "/myServlet");
         return registrationBean;
@@ -35,6 +36,7 @@ public class MyServerConfig {
      * @return
      */
     @Bean
+    @SuppressWarnings("rawtypes")
     public FilterRegistrationBean myFilter() {
         FilterRegistrationBean registrationBean = new FilterRegistrationBean();
         registrationBean.setFilter(new Myfilter());
@@ -49,6 +51,7 @@ public class MyServerConfig {
      * @return
      */
     @Bean
+    @SuppressWarnings("rawtypes")
     public ServletListenerRegistrationBean myListener() {
         ServletListenerRegistrationBean<Mylistener> registrationBean = new ServletListenerRegistrationBean<>(new Mylistener());
         return registrationBean;
